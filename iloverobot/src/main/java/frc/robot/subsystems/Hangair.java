@@ -18,7 +18,6 @@ public class Hangair extends SubsystemBase {
     }
 
     public void hangairout(){ 
-
           hangdoubleSolenoid.set(DoubleSolenoid.Value.kForward);
       }
 

@@ -63,9 +63,20 @@ public final class Constants {
     }
 
     public static class Button{
+        public static final int shootbutt = 2;//要改
+        public static final int intakeinbutt = 2;//要改
+        public static final int intakeoutbutt = 2;//要改
+        public static final int hangairoutbutt = 2;//要改
+        public static final int hangairinbutt = 2;//要改
+        public static final int hangaupbutt = 2;//要改
+        public static final int hangdownbutt = 2;//要改
+        public static final int aimbutt = 2;//要改
+        
+
+
+        //old
         public static final int intake_wing = 2;
         public static final int arm = 3;
-
         public static final int intake_reverse = 7;
         public static final int rateChanger = 8;
 
@@ -86,9 +97,9 @@ public final class Constants {
 
     public static class Chassis{
         public static final int leftMaster    = 4;
-        public static final int leftFollewer  = 2;
+        public static final int leftFollewer  = 3;
         public static final int rightMaster   = 1;
-        public static final int rightFollower = 3;
+        public static final int rightFollower = 2;
         public static final double distancePerPulse = 0.1524 * Math.PI / 2048 / 9.7;
         public static final double wheelPitch = 0.7407;
 

@@ -18,11 +18,11 @@ public class Sendball extends SubsystemBase {
         sendshootmotor.configFactoryDefault();
         sendsmotor.configFactoryDefault();
     }
-    public void Sendshootball(){
+    public void sendshootball(){
         sendshootmotor.set(ControlMode.PercentOutput,1);
 
     }
-    public  void Sendshootballstop(){
+    public  void sendshootballstop(){
         sendshootmotor.set(ControlMode.PercentOutput,0);
     }
     public void  send(){

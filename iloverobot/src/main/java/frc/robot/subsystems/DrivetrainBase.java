@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlFrame;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
@@ -14,21 +15,26 @@ import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.kauailabs.navx.frc.AHRS;
 import frc.robot.MotorFactory;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import frc.robot.Constants.*;
 
 
-/**
+/**WPI_TalonFX
  * Must be sure these objects will be instantiated only once
  */
 public class DrivetrainBase extends SubsystemBase {
-  protected static WPI_TalonFX leftMas  = new WPI_TalonFX(Chassis.leftMaster);
-  protected static WPI_TalonFX leftFol  = new WPI_TalonFX(Chassis.leftFollewer);
-  protected static WPI_TalonFX rightMas = new WPI_TalonFX(Chassis.rightMaster);
-  protected static WPI_TalonFX rightFol = new WPI_TalonFX(Chassis.rightFollower);
+  protected static WPI_TalonSRX leftMas  = new WPI_TalonSRX(Chassis.leftMaster);
+  protected static WPI_TalonSRX leftFol  = new WPI_TalonSRX(Chassis.leftFollewer);
+  protected static WPI_TalonSRX rightMas = new WPI_TalonSRX(Chassis.rightMaster);
+  protected static WPI_TalonSRX rightFol = new WPI_TalonSRX(Chassis.rightFollower);
   protected static AHRS ahrs = new AHRS(SPI.Port.kMXP);
   private   static boolean isFirst = true; 
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);

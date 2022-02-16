@@ -11,24 +11,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
     private static VictorSPX intakemotor=new VictorSPX(Constants.intakemotorno);
-    protected static Compressor intakecompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-    private final DoubleSolenoid intakedoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
+  //  private final DoubleSolenoid intakedoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
 
 
     public  Intake(){
         intakemotor.configFactoryDefault();
-        intakecompressor.enableDigital();
     }
 
-    public void Intakeworks(){ 
-          intakedoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+    public void intakego(){ 
+    //      intakedoubleSolenoid.set(DoubleSolenoid.Value.kForward);
           intakemotor.set(ControlMode.PercentOutput, 0.7);
       }
 
 
         
-    public void Intakestop(){        
-      intakedoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+    public void intakeback(){        
+      //intakedoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
       intakemotor.set(ControlMode.PercentOutput, 0);
     }
 
