@@ -10,29 +10,20 @@ import frc.robot.Constants;
 
 
 public class Sendball extends SubsystemBase {
-    VictorSPX  sendshootmotor = new VictorSPX(Constants.sendshootmotorno);
-    VictorSPX  sendsmotor = new VictorSPX(Constants.sendmotorno);
-
+    VictorSPX  brushsmotor = new VictorSPX(Constants.brushmotorno);
+//sendsmoror=brush
     
     public Sendball(){
-        sendshootmotor.configFactoryDefault();
-        sendsmotor.configFactoryDefault();
+        brushsmotor.configFactoryDefault();
     }
-    public void sendshootball(){
-        sendshootmotor.set(ControlMode.PercentOutput,1);
 
-    }
-    public  void sendshootballstop(){
-        sendshootmotor.set(ControlMode.PercentOutput,0);
-    }
-    public void  send(){
-        sendsmotor.set(ControlMode.PercentOutput,1);
+    public void  brushtheball(){
+        brushsmotor.set(ControlMode.PercentOutput,1);
 
     }
 
-    public void sendstop(){
-        sendsmotor.set(ControlMode.PercentOutput,0);
-
+    public void brushstop(){
+        brushsmotor.set(ControlMode.PercentOutput,0);
     }
     
 

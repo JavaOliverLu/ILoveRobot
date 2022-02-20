@@ -101,6 +101,10 @@ public class ControlDrivetrain extends DrivetrainBase {
     rightMas.set(ControlMode.PercentOutput, -rightout * rate * (isFast ? 1.5 : 1));
   }
 
+  public void gogogo(){
+    leftMas.set(ControlMode.PercentOutput,1);
+    rightMas.set(ControlMode.PercentOutput,1);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

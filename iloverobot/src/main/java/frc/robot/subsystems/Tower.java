@@ -14,7 +14,7 @@ public class Tower extends SubsystemBase {
     private static TalonSRX towerSrx = new TalonSRX(Constants.tower);
     private static double basicPower = 0.07;
     
-    public Tower(Limelight limelight){
+    public Tower(){
         towerSrx.configFactoryDefault();
         towerSrx.configSelectedFeedbackSensor(TalonSRXFeedbackDevice.CTRE_MagEncoder_Absolute, 0, Constants.kTimesOut);
         towerSrx.setSelectedSensorPosition(0);

@@ -22,19 +22,17 @@ public final class Constants {
     public static final int kTimesOut = 10;  
 
     /*馬達腳位*/
-    //public static final int conveyor         = 3;	
-    //public static final int Wing_TwoWing     = 1;
-    //public static final int Wing_middle      = 2;
-    public static final int flywheelleft     = 17;
-    public static final int flywheelRight    = 15;
-    public static final int tower            = 36;
-    public static final int racker           = 25;
-    public static final int intakemotorno    = 25;//要改
-    public static final int sendshootmotorno    = 25;//要改 sendmotorno
-    public static final int sendmotorno   = 25;//要改 sendmotorno
-    public static final int hangleftmotorno   = 25;//要改 sendmotorno
-    public static final int hangrightmotorno   = 25;//要改 sendmotorno
-    public static final int shootballmotor  = 25;//要改 sendmotorno
+
+
+    public static final int tower            = 0;//要改v
+    public static final int intakemotorno    = 4;//要改v
+    public static final int sendshootmotorno    =1 ;//要改v
+    public static final int brushmotorno   = 5;//要改 v
+    public static final int hangleftmotorno   = 25;//要改 
+    public static final int hangrightmotorno   = 25;//要改
+    public static final int shootermasterno=16;//要改 v
+    public static final int shooterslaverno=19;//要改 v
+
     /*PDP位址*/
     public static final int Conveyor_PDP        = 5; 
     public static final int Wing_TwoWing_PDP    = 10;
@@ -50,27 +48,22 @@ public final class Constants {
         public static final double fly_kD        = 0.0005;
         public static final double fly_kFCLOSE   = 0.05;
         public static final double fly_kFAR      = 0.05;
-        public static final double rackerKP      = 0.25;
-        public static final double rackerKI      = 0.0005;
-        public static final double rackerKD      = 0.0001;
-        public static final int    rackerError   = 70;
         public static boolean      aimming       = false;
 
         public static final double towerConst    = 0.01;
-        public static final int rackerIZone      = 150;
         public static final int portHigh         = 250;     //cm
         public static final int robotHigh        = 55+5;    //cm 
     }
 
     public static class Button{
-        public static final int shootbutt = 2;//要改
-        public static final int intakeinbutt = 2;//要改
-        public static final int intakeoutbutt = 2;//要改
-        public static final int hangairoutbutt = 2;//要改
-        public static final int hangairinbutt = 2;//要改
-        public static final int hangaupbutt = 2;//要改
-        public static final int hangdownbutt = 2;//要改
-        public static final int aimbutt = 2;//要改
+        public static final int shootbutt = 1;//要改
+        public static final int intakeinbutt =2;//要改
+        public static final int intakeoutbutt =3;//要改
+        public static final int hangairoutbutt =4;//要改
+        public static final int hangairinbutt = 5;//要改
+        public static final int hangaupbutt = 6;//要改
+        public static final int hangdownbutt = 7;//要改
+        public static final int aimbutt = 8;//要改
         
 
 
@@ -84,8 +77,6 @@ public final class Constants {
     public static class Xbox{
         public static final int tower_left = 1;
         public static final int tower_right = 3;
-        public static final int ranker_up = 2;
-        public static final int ranker_down = 4;
         public static final int flywheel = 5;
         public static final int shoot = 6;
         public static final int aim = 7;

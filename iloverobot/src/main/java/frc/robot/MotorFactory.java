@@ -31,12 +31,12 @@ public class MotorFactory {
     }
     /**
      * Initializing motor
-     * @param leftMas
+     * @param rightMas
      * @return motor
      */
-    public static WPI_TalonSRX init(final WPI_TalonSRX leftMas) {
-        leftMas.configFactoryDefault();
-        return leftMas;
+    public static TalonSRX init(final TalonSRX rightMas) {
+        rightMas.configFactoryDefault();
+        return rightMas;
     }
     /**
      * Initializing motor
@@ -51,16 +51,16 @@ public class MotorFactory {
     /**
      * Set follower.And initializing motor.
      * 
-     * @param leftMas
-     * @param leftFol
+     * @param rightMas
+     * @param rightFol
      * @return master
      */
-    public static WPI_TalonSRX setFollower(final WPI_TalonSRX leftMas, final WPI_TalonSRX leftFol) {
-        MotorFactory.init(leftMas);
-        MotorFactory.init(leftFol);
+    public static TalonSRX setFollower(final TalonSRX rightMas, final TalonSRX rightFol) {
+        MotorFactory.init(rightMas);
+        MotorFactory.init(rightFol);
 
-        leftFol.follow(leftMas);
-        return leftMas;
+        rightFol.follow(rightMas);
+        return rightMas;
     }
 
     /**
@@ -126,7 +126,7 @@ public class MotorFactory {
      * @param timeoutMs
      * @return motor
      */
-    public static WPI_TalonSRX setPosion(final WPI_TalonSRX leftMas, final int sensorPosition, final int pidSlot,
+    public static TalonSRX setPosion(final TalonSRX leftMas, final int sensorPosition, final int pidSlot,
             final int timeoutMs) {
         MotorConfig.sensorPosition = sensorPosition;
         MotorConfig.pidSlot = pidSlot;
@@ -183,15 +183,15 @@ public class MotorFactory {
     /**
      * Set motor like previous.
      * 
-     * @param leftFol 
+     * @param rightMas 
      * @param sensorPhase
      * @param isleftmotorinvert  {@link MotorConfig}
      */
-    public static void configLikePrevious(final WPI_TalonSRX leftFol, final boolean sensorPhase, final boolean isleftmotorinvert) {
-        leftFol.configSelectedFeedbackSensor(MotorConfig.sensor);
-        leftFol.setSelectedSensorPosition(MotorConfig.sensorPosition, MotorConfig.pidSlot, MotorConfig.timeoutMs);
-        leftFol.setSensorPhase(sensorPhase);
-        leftFol.setInverted(isleftmotorinvert);
+    public static void configLikePrevious(final TalonSRX rightMas, final boolean sensorPhase, final boolean isleftmotorinvert) {
+        rightMas.configSelectedFeedbackSensor(MotorConfig.sensor);
+        rightMas.setSelectedSensorPosition(MotorConfig.sensorPosition, MotorConfig.pidSlot, MotorConfig.timeoutMs);
+        rightMas.setSensorPhase(sensorPhase);
+        rightMas.setInverted(isleftmotorinvert);
     }
 
     /**
@@ -273,7 +273,7 @@ public class MotorFactory {
      * @param voltage
      * @return
      */
-    public static WPI_TalonSRX voltageCompSaturation(WPI_TalonSRX leftMas, float voltage){
+    public static TalonSRX voltageCompSaturation(TalonSRX leftMas, float voltage){
         leftMas.configVoltageCompSaturation(voltage);
         leftMas.enableVoltageCompensation(true);
         return leftMas;

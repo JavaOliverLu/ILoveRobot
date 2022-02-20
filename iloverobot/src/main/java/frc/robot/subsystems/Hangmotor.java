@@ -16,6 +16,7 @@ public class Hangmotor extends SubsystemBase {
         hangrightmotor.follow(hangleftmotor);
     }
 
+    
     public void  hangup(){
         hangleftmotor.set(ControlMode.PercentOutput,1);
     }
