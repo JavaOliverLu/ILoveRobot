@@ -85,12 +85,11 @@ public class Tower extends SubsystemBase {
 
     @Override
     public void periodic(){
-        // if(digInput.get()){
-        //     towerSrx.setSelectedSensorPosition(0,0,10);
-        // }  
         if(Limelight.getarea() > 0){
             lastX = Limelight.getTx();
         }
         SmartDashboard.putNumber("towerpo", towerSrx.getSelectedSensorPosition(0));
     }
+
+    
 } 

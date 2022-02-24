@@ -18,7 +18,7 @@ public class Sendball extends SubsystemBase {
     }
 
     public void  brushtheball(){
-        brushsmotor.set(ControlMode.PercentOutput,1);
+        brushsmotor.set(ControlMode.PercentOutput,0.6);
 
     }
 

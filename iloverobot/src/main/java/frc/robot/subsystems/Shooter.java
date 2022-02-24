@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -44,13 +45,26 @@ public class Shooter extends SubsystemBase {
         // 9000 ~ 12000
         // 230  ~ 430
         shootermaster.set(ControlMode.Velocity, 1200);
-        sendshootmotor.set(ControlMode.PercentOutput,1);
+        sendshootmotor.set(ControlMode.PercentOutput,-0.6);
     }
 
     public void stop(){
         shootermaster.set(ControlMode.PercentOutput, 0);
         sendshootmotor.set(ControlMode.PercentOutput,0);
 
+    }
+    @Override
+    public void periodic() {
+      SmartDashboard.putNumber("flyvel", shootermaster.getSelectedSensorVelocity(0));
+      if(Limelight.getdistances() < 80&&7700<shootermaster.getSelectedSensorVelocity()&&9200>shootermaster.getSelectedSensorVelocity()){
+        SmartDashboard.putBoolean("YouCanShoot", true);
+      }else if (Limelight.getdistances() < 130&&9500<shootermaster.getSelectedSensorVelocity()&&12000>shootermaster.getSelectedSensorVelocity()){
+        SmartDashboard.putBoolean("YouCanShoot", true);
+      }else if (Limelight.getdistances() > 130&&10200<shootermaster.getSelectedSensorVelocity()&&13200>shootermaster.getSelectedSensorVelocity()){
+        SmartDashboard.putBoolean("YouCanShoot", true);
+      }else {
+        SmartDashboard.putBoolean("YouCanShoot", false);
+      }
     }
 
 }

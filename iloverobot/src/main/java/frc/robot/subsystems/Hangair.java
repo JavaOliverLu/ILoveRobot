@@ -14,6 +14,7 @@ public class Hangair extends SubsystemBase {
     //protected static Compressor intakecompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
    // private final DoubleSolenoid hangdoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
     public  Hangair(){
+      Intake.enablecompressor();
        // intakecompressor.enableDigital();
     }
 

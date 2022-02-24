@@ -28,8 +28,8 @@ public final class Constants {
     public static final int intakemotorno    = 4;//要改v
     public static final int sendshootmotorno    =1 ;//要改v
     public static final int brushmotorno   = 5;//要改 v
-    public static final int hangleftmotorno   = 25;//要改 
-    public static final int hangrightmotorno   = 25;//要改
+    public static final int hangleftmotorno   = 4;//要改 
+    public static final int hangrightmotorno   = 18;//要改
     public static final int shootermasterno=16;//要改 v
     public static final int shooterslaverno=19;//要改 v
 
@@ -56,6 +56,9 @@ public final class Constants {
     }
 
     public static class Button{
+        public static final int rateChanger = 8;  //old
+    }
+    public static class Xbox{
         public static final int shootbutt = 1;//要改
         public static final int intakeinbutt =2;//要改
         public static final int intakeoutbutt =3;//要改
@@ -64,26 +67,6 @@ public final class Constants {
         public static final int hangaupbutt = 6;//要改
         public static final int hangdownbutt = 7;//要改
         public static final int aimbutt = 8;//要改
-        
-
-
-        //old
-        public static final int intake_wing = 2;
-        public static final int arm = 3;
-        public static final int intake_reverse = 7;
-        public static final int rateChanger = 8;
-
-    }
-    public static class Xbox{
-        public static final int tower_left = 1;
-        public static final int tower_right = 3;
-        public static final int flywheel = 5;
-        public static final int shoot = 6;
-        public static final int aim = 7;
-        public static final int record = 12;
-        public static final int show = 8;
-        // public static final int record = 12;
-        // public static final int show = 8;
     }
 
     public static class Chassis{

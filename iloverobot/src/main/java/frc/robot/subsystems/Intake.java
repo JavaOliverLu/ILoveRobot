@@ -20,15 +20,18 @@ public class Intake extends SubsystemBase {
         intakecompressor.enableDigital();
 
     }
-
-    public void intakego(){ 
+    public static void enablecompressor(){
+      intakecompressor.enableDigital();
+    }
+//Intake.
+    public void intakeback(){ 
           intakedoubleSolenoid.set(DoubleSolenoid.Value.kForward);
           intakemotor.set(ControlMode.PercentOutput, 0);
       }
 
 
         
-    public void intakeback(){        
+    public void intakego(){        
       intakedoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
       intakemotor.set(ControlMode.PercentOutput,-0.7);
     }

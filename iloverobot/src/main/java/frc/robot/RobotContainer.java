@@ -9,6 +9,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.Four;
+import frc.robot.commands.One;
+import frc.robot.commands.Three;
+import frc.robot.commands.TrajectoryCommand;
+import frc.robot.commands.Two;
 import frc.robot.subsystems.ControlDrivetrain;
 import frc.robot.subsystems.Hangair;
 import frc.robot.subsystems.Hangmotor;
@@ -16,6 +21,8 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Sendball;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Tower;
+import frc.robot.subsystems.trajectory.TrajectoryDrivetrain;
+import frc.robot.subsystems.trajectory.TrajectoryFactory;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -28,16 +35,17 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  Shooter shooter=new Shooter();
-  Intake intake=new Intake();
-  Hangair hangair=new Hangair();
-  Sendball sendball=new Sendball();
-  Hangmotor hangmotor=new Hangmotor();
-  Joystick stick = new Joystick(1);
-  Tower tower=new Tower();
-  XboxController xvideo=new XboxController(2);
-private final SendableChooser<Command> chooser = new SendableChooser<Command>();
- private ControlDrivetrain controlDrivetrain = new ControlDrivetrain();
+  private Shooter shooter=new Shooter();
+  private Intake intake=new Intake();
+  private Hangair hangair=new Hangair();
+  private Sendball sendball=new Sendball();
+  private Hangmotor hangmotor=new Hangmotor();
+  private Joystick stick = new Joystick(1);
+  private Tower tower=new Tower();
+  private XboxController xvideo=new XboxController(2);
+  private final SendableChooser<Command> chooser = new SendableChooser<Command>();
+  private ControlDrivetrain controlDrivetrain = new ControlDrivetrain();
+  private TrajectoryDrivetrain trajectoryDrivetrain = new TrajectoryDrivetrain();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,7 +53,6 @@ private final SendableChooser<Command> chooser = new SendableChooser<Command>();
     Status();
     teleop();
     chooser();
-   // Compressor();
     configureButtonBindings();
   }
 
@@ -56,12 +63,16 @@ private final SendableChooser<Command> chooser = new SendableChooser<Command>();
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   public void chooser(){
-    //chooser.setDefaultOption("LeftUp", new LeftUp(controlDrivetrain, trajectoryDrivetrain, 
-  //                                         m_Racker, m_tower, m_Intake, 
-    //                                       m_Wing, m_Shooter, m_Conveyor, m_arm));
-    //chooser.addOption("Move", new Move(controlDrivetrain));
+    chooser.setDefaultOption("One", new One( controlDrivetrain, trajectoryDrivetrain,
+                                               tower, intake, shooter , sendball));
+    chooser.addOption("One", new Two( controlDrivetrain, trajectoryDrivetrain,
+                                               tower, intake, shooter , sendball));
+    chooser.addOption("One", new Three( controlDrivetrain, trajectoryDrivetrain,
+                                               tower, intake, shooter , sendball));
+    chooser.addOption("One", new Four( controlDrivetrain, trajectoryDrivetrain,
+                                               tower, intake, shooter , sendball));
     chooser.addOption("Null", null);
-    // chooser.addOption("one", TrajectoryCommand.build(TrajectoryFactory.getTrajectory("output/test.wpilib.json"), trajectoryDrivetrain, TrajectoryCommand.OutputMode.VOLTAGE, trajectoryDrivetrain));
+    chooser.addOption("one", TrajectoryCommand.build(TrajectoryFactory.getTrajectory("output/test.wpilib.json"), trajectoryDrivetrain, TrajectoryCommand.OutputMode.VOLTAGE, trajectoryDrivetrain));
     SmartDashboard.putData(chooser);
   }
   private void configureButtonBindings() {
@@ -78,27 +89,27 @@ private final SendableChooser<Command> chooser = new SendableChooser<Command>();
                                                                           .whenReleased(new InstantCommand(()->shooter.stop(),shooter))
                                                                           .whenReleased(new InstantCommand(()->sendball.brushstop(),sendball));
      
-     new JoystickButton(xvideo,Constants.Button.intakeinbutt)              .whenHeld(new InstantCommand(()->intake.intakego(),intake))
+     new JoystickButton(xvideo,Constants.Xbox.intakeinbutt)              .whenHeld(new InstantCommand(()->intake.intakego(),intake))
                                                                            .whenHeld(new RunCommand(()->sendball.brushtheball(),sendball));
                                                                                                                                           
 
-     new JoystickButton(xvideo,Constants.Button.intakeoutbutt)             .whenHeld(new InstantCommand(()->intake.intakeback(),intake))
+     new JoystickButton(xvideo,Constants.Xbox.intakeoutbutt)             .whenHeld(new InstantCommand(()->intake.intakeback(),intake))
                                                                            .whenHeld(new RunCommand(()->sendball.brushstop(),sendball));
 
-     new JoystickButton(xvideo,Constants.Button.hangairoutbutt)            .whenHeld(new InstantCommand(()->hangair.hangairout(),hangair));
+     new JoystickButton(xvideo,Constants.Xbox.hangairoutbutt)            .whenHeld(new InstantCommand(()->hangair.hangairout(),hangair));
 
-      new JoystickButton(xvideo,Constants.Button.hangairinbutt)            .whenHeld(new InstantCommand(()->hangair.hangairin(),hangair));
+      new JoystickButton(xvideo,Constants.Xbox.hangairinbutt)            .whenHeld(new InstantCommand(()->hangair.hangairin(),hangair));
 
-      new JoystickButton(xvideo,Constants.Button.hangaupbutt )             .whenHeld(new RunCommand(()->hangmotor.hangup(),hangmotor))
+      new JoystickButton(xvideo,Constants.Xbox.hangaupbutt )             .whenHeld(new RunCommand(()->hangmotor.hangup(),hangmotor))
                                                                            .whenReleased(new InstantCommand(()->hangmotor.hangupstop(),hangmotor));
       
-      new JoystickButton(xvideo,Constants.Button.hangdownbutt)            .whenHeld(new RunCommand(()->hangmotor.hangdown(),hangmotor))
+      new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)            .whenHeld(new RunCommand(()->hangmotor.hangdown(),hangmotor))
                                                                            .whenReleased(new InstantCommand(()->hangmotor.hangdownstop(),hangmotor));
 
-     new JoystickButton(xvideo,Constants.Button.hangdownbutt)             .whenHeld(new RunCommand(()->tower.towerForward(),tower))
+     new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)             .whenHeld(new RunCommand(()->tower.towerForward(),tower))
                                                                            .whenReleased(new InstantCommand(()->tower.towerStop(),tower));
 
-     new JoystickButton(xvideo,Constants.Button.hangdownbutt)              .whenHeld(new RunCommand(()->tower.towerReverse(),hangmotor))
+     new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)              .whenHeld(new RunCommand(()->tower.towerReverse(),hangmotor))
                                                                            .whenReleased(new InstantCommand(()->tower.towerStop(),tower));
 
   }
@@ -117,9 +128,7 @@ private final SendableChooser<Command> chooser = new SendableChooser<Command>();
   public void Status(){
 
   }
- // public void Compressor() {
-   // hangair.enable();
-  //}
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
