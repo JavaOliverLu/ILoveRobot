@@ -16,14 +16,12 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
     private TalonFX shootermaster = new TalonFX(Constants.shootermasterno);
     private TalonFX shooterslaver = new TalonFX(Constants.shooterslaverno);
-    private VictorSPX  sendshootmotor = new VictorSPX(Constants.sendshootmotorno);
 
     private SupplyCurrentLimitConfiguration currentLimit
              = new SupplyCurrentLimitConfiguration(true, 40, 50, 0.8);
     
     public  Shooter(){
         shootermaster.configFactoryDefault();
-        sendshootmotor.configFactoryDefault();
         shooterslaver.follow(shootermaster);
         shooterslaver.setInverted(TalonFXInvertType.OpposeMaster);
         shootermaster.config_kF(0, 0.048);
@@ -44,13 +42,11 @@ public class Shooter extends SubsystemBase {
     public void shoot(){
         // 9000 ~ 12000
         // 230  ~ 430
-        shootermaster.set(ControlMode.Velocity, 1200);
-        sendshootmotor.set(ControlMode.PercentOutput,-0.6);
+        shootermaster.set(ControlMode.Velocity, 12000);
     }
 
     public void stop(){
         shootermaster.set(ControlMode.PercentOutput, 0);
-        sendshootmotor.set(ControlMode.PercentOutput,0);
 
     }
     @Override

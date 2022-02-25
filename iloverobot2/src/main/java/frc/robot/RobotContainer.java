@@ -6,10 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.Four;
 import frc.robot.commands.One;
 import frc.robot.commands.Three;
 import frc.robot.commands.TrajectoryCommand;
@@ -65,14 +64,13 @@ public class RobotContainer {
   public void chooser(){
     chooser.setDefaultOption("One", new One( controlDrivetrain, trajectoryDrivetrain,
                                                tower, intake, shooter , sendball));
-    chooser.addOption("One", new Two( controlDrivetrain, trajectoryDrivetrain,
+    chooser.addOption("two", new Two( controlDrivetrain, trajectoryDrivetrain,
                                                tower, intake, shooter , sendball));
-    chooser.addOption("One", new Three( controlDrivetrain, trajectoryDrivetrain,
+    chooser.addOption("three", new Three( controlDrivetrain, trajectoryDrivetrain,
                                                tower, intake, shooter , sendball));
-    chooser.addOption("One", new Four( controlDrivetrain, trajectoryDrivetrain,
-                                               tower, intake, shooter , sendball));
+  
     chooser.addOption("Null", null);
-    chooser.addOption("one", TrajectoryCommand.build(TrajectoryFactory.getTrajectory("output/test.wpilib.json"), trajectoryDrivetrain, TrajectoryCommand.OutputMode.VOLTAGE, trajectoryDrivetrain));
+    //chooser.addOption("one", TrajectoryCommand.build(TrajectoryFactory.getTrajectory("output/test.wpilib.json"), trajectoryDrivetrain, TrajectoryCommand.OutputMode.VOLTAGE, trajectoryDrivetrain));
     SmartDashboard.putData(chooser);
   }
   private void configureButtonBindings() {
@@ -84,9 +82,8 @@ public class RobotContainer {
 
 
 
-      new JoystickButton(xvideo,1)                                         .whenHeld(new RunCommand(()->shooter.shoot(),shooter))
-                                                                           .whenHeld(new RunCommand(()->sendball.brushtheball(),sendball))
-                                                                          .whenReleased(new InstantCommand(()->shooter.stop(),shooter))
+      new JoystickButton(xvideo,1)                                        
+                                                                           
                                                                           .whenReleased(new InstantCommand(()->sendball.brushstop(),sendball));
      
      new JoystickButton(xvideo,Constants.Xbox.intakeinbutt)              .whenHeld(new InstantCommand(()->intake.intakego(),intake))

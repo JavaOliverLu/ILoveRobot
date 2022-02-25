@@ -17,7 +17,7 @@ package frc.robot;
  */
 public final class Constants {
     public static class Path{
-        public static String LeftUp = "output/LeftUp.wpilib.json";
+        public static String test = "output/test.wpilib.json";
     }
     public static final int kTimesOut = 10;  
 
