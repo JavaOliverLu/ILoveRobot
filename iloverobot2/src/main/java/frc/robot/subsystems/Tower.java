@@ -61,7 +61,7 @@ public class Tower extends SubsystemBase {
             }else{
                 towerSrx.set(ControlMode.PercentOutput, 0.1);
             }
-        }
+        }  
      }
      
     public void towerForward(){

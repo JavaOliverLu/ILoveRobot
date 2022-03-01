@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.TimedRobot;
 
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorSensorV3;
@@ -8,9 +7,10 @@ import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class Colorsensor extends DrivetrainBase {  /**
+public class Colorsensor extends SubsystemBase {  /**
    * Change the I2C port below to match the connection of your color sensor
    */
   private final ColorMatch m_colorMatcher = new ColorMatch();

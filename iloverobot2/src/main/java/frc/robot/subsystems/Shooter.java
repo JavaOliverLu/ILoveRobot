@@ -6,6 +6,8 @@ import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -16,12 +18,14 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
     private TalonFX shootermaster = new TalonFX(Constants.shootermasterno);
     private TalonFX shooterslaver = new TalonFX(Constants.shooterslaverno);
+    private VictorSPX  sendshootmotor = new VictorSPX(Constants.sendshootmotorno);
 
     private SupplyCurrentLimitConfiguration currentLimit
              = new SupplyCurrentLimitConfiguration(true, 40, 50, 0.8);
     
     public  Shooter(){
         shootermaster.configFactoryDefault();
+        sendshootmotor.configFactoryDefault();
         shooterslaver.follow(shootermaster);
         shooterslaver.setInverted(TalonFXInvertType.OpposeMaster);
         shootermaster.config_kF(0, 0.048);
@@ -39,10 +43,160 @@ public class Shooter extends SubsystemBase {
         shootermaster.configNeutralDeadband(0.03, 100);
     }
 
-    public void shoot(){
-        // 9000 ~ 12000
-        // 230  ~ 430
-        shootermaster.set(ControlMode.Velocity, 12000);
+    public void shoot(){/*
+      if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+      else if(Limelight.getdistances()<=80){
+        if(DriverStation.getAlliance() == Alliance.Blue){
+          shootermaster.config_kF(0, 0.05);
+          shooterslaver.config_kF(0, 0.05);
+          shootermaster.set(ControlMode.Velocity, 8000);
+          if(shootermaster.getSelectedSensorVelocity()==8000){
+            sendshootmotor.set(ControlMode.PercentOutput,1);
+          }
+        }
+        else if(DriverStation.getAlliance() == Alliance.Red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+        }
+      }
+
+*/
+shootermaster.set(ControlMode.Velocity, 2000);
+
     }
 
     public void stop(){

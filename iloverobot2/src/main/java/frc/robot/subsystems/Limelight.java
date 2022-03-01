@@ -28,7 +28,7 @@ public class Limelight extends SubsystemBase{
         limelightvalue[1]=y;
         double area = ta.getDouble(0.0);    
         limelightvalue[2]=area;
-        double distance = (250-55)/(Math.tan(Math.toRadians(54+y)));  
+        double distance = (250-55)/(Math.tan(Math.toRadians(41+y)));  
         limelightvalue[3]=distance;
         return limelightvalue;
     }
@@ -48,7 +48,7 @@ public class Limelight extends SubsystemBase{
     }
     
     public static double getdistances(){
-        double distance = (206-58)/(Math.tan(Math.toRadians(54+Limelight.getTy())));
+        double distance = (206-58)/(Math.tan(Math.toRadians(41+Limelight.getTy())));
         return distance;
     }
 

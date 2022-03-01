@@ -82,10 +82,12 @@ public class RobotContainer {
 
 
 
-      new JoystickButton(xvideo,1)                                        
-                                                                           
+      new JoystickButton(xvideo,1)           
+                                                                          .whenHeld(new RunCommand(()->sendball.brushtheball(),sendball))                             
+                                                                          .whenHeld(new RunCommand(()->shooter.shoot(),shooter))
+                                                                          .whenReleased(new InstantCommand(()->shooter.stop(),shooter))
                                                                           .whenReleased(new InstantCommand(()->sendball.brushstop(),sendball));
-     
+    
      new JoystickButton(xvideo,Constants.Xbox.intakeinbutt)              .whenHeld(new InstantCommand(()->intake.intakego(),intake))
                                                                            .whenHeld(new RunCommand(()->sendball.brushtheball(),sendball));
                                                                                                                                           
@@ -103,15 +105,15 @@ public class RobotContainer {
       new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)            .whenHeld(new RunCommand(()->hangmotor.hangdown(),hangmotor))
                                                                            .whenReleased(new InstantCommand(()->hangmotor.hangdownstop(),hangmotor));
 
-     new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)             .whenHeld(new RunCommand(()->tower.towerForward(),tower))
+     new JoystickButton(xvideo,8)             .whenHeld(new RunCommand(()->tower.towerForward(),tower))
                                                                            .whenReleased(new InstantCommand(()->tower.towerStop(),tower));
 
-     new JoystickButton(xvideo,Constants.Xbox.hangdownbutt)              .whenHeld(new RunCommand(()->tower.towerReverse(),hangmotor))
+     new JoystickButton(xvideo,9)              .whenHeld(new RunCommand(()->tower.towerReverse(),hangmotor))
                                                                            .whenReleased(new InstantCommand(()->tower.towerStop(),tower));
 
   }
   public void teleop(){
-  /*
+  
     controlDrivetrain.setDefaultCommand(
       new RunCommand(()->
       controlDrivetrain.curvatureDrive(stick.getY() * 0.7, 
@@ -120,7 +122,7 @@ public class RobotContainer {
                                        stick.getRawButton(1)),
         controlDrivetrain)
     );
-*/
+
   }
   public void Status(){
 

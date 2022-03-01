@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.Chassis;
 import frc.robot.subsystems.*;
 
-//w
 public class TrajectoryDrivetrain extends DrivetrainBase implements TrajectorySystem{
 
   private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(getHeading());
@@ -209,3 +208,4 @@ public class TrajectoryDrivetrain extends DrivetrainBase implements TrajectorySy
     message();
   }
 }
+

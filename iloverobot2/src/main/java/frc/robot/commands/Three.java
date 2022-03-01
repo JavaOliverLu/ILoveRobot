@@ -25,7 +25,7 @@ public class Three extends SequentialCommandGroup {
   public Three(ControlDrivetrain base, TrajectorySystem drivetrain,Tower tower,Intake intake,Shooter shooter ,Sendball sendball) {
     addCommands(new InstantCommand(()->intake.intakego(), intake));
     addCommands(new InstantCommand(()->sendball. brushtheball(), intake));
-    addCommands(TrajectoryCommand.build(TrajectoryFactory.getTrajectory(Path.test), drivetrain, OutputMode.VOLTAGE, drivetrain));
+    addCommands(TrajectoryCommand.build(TrajectoryFactory.getTrajectory(Path.routethree), drivetrain, OutputMode.VOLTAGE, drivetrain));
     addCommands(new RunCommand(()->tower.aimming(), tower).withTimeout(0.8));
     addCommands(new InstantCommand(()->tower.towerStop(), tower));
     addCommands(new RunCommand(()->shooter.shoot(), shooter).withTimeout(30));

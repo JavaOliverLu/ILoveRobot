@@ -31,10 +31,10 @@ import frc.robot.Constants.*;
  * Must be sure these objects will be instantiated only once
  */
 public class DrivetrainBase extends SubsystemBase {
-  protected static TalonSRX leftMas  = new TalonSRX(Chassis.leftMaster);
-  protected static TalonSRX leftFol  = new TalonSRX(Chassis.leftFollewer);
-  protected static TalonSRX rightMas = new TalonSRX(Chassis.rightMaster);
-  protected static TalonSRX rightFol = new TalonSRX(Chassis.rightFollower);
+  protected static WPI_TalonFX leftMas  = new WPI_TalonFX(Chassis.leftMaster);
+  protected static WPI_TalonFX leftFol  = new WPI_TalonFX(Chassis.leftFollewer);
+  protected static WPI_TalonFX rightMas = new WPI_TalonFX(Chassis.rightMaster);
+  protected static WPI_TalonFX rightFol = new WPI_TalonFX(Chassis.rightFollower);
   protected static AHRS ahrs = new AHRS(SPI.Port.kMXP);
   private   static boolean isFirst = true; 
   private SupplyCurrentLimitConfiguration supplyCurrentLimitConfiguration = new SupplyCurrentLimitConfiguration(true, 40, 50, 1);

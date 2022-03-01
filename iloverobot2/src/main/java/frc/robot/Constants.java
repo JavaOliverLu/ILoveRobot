@@ -17,21 +17,25 @@ package frc.robot;
  */
 public final class Constants {
     public static class Path{
+        public static String routeone = "output/Routeone.json";
+        public static String routetwo = "output/Routetwo.json";
+        public static String routethree = "output/Routethree.json";
         public static String test = "output/test.wpilib.json";
+
     }
     public static final int kTimesOut = 10;  
 
     /*馬達腳位*/
 
 
-    public static final int tower            = 0;//要改v
-    public static final int intakemotorno    = 4;//要改v
-    public static final int sendshootmotorno    =1 ;//要改v
-    public static final int brushmotorno   = 5;//要改 v
-    public static final int hangleftmotorno   = 4;//要改 
-    public static final int hangrightmotorno   = 18;//要改
-    public static final int shootermasterno=16;//要改 v
-    public static final int shooterslaverno=19;//要改 v
+    public static final int tower            = 3;
+    public static final int intakemotorno    = 2;
+    public static final int sendshootmotorno    =1 ;
+    public static final int brushmotorno   =5 ; 
+    public static final int hangleftmotorno   = 18 ;
+    public static final int hangrightmotorno   = 4;
+    public static final int shootermasterno=16;
+    public static final int shooterslaverno=19;
 
     /*PDP位址*/
     public static final int Conveyor_PDP        = 5; 
@@ -70,10 +74,10 @@ public final class Constants {
     }
 
     public static class Chassis{
-        public static final int leftMaster    = 4;
-        public static final int leftFollewer  = 3;
-        public static final int rightMaster   = 1;
-        public static final int rightFollower = 2;
+        public static final int leftMaster    = 17;
+        public static final int leftFollewer  = 20;
+        public static final int rightMaster   = 9;
+        public static final int rightFollower = 15;
         public static final double distancePerPulse = 0.1524 * Math.PI / 2048 / 9.7;
         public static final double wheelPitch = 0.7407;
 

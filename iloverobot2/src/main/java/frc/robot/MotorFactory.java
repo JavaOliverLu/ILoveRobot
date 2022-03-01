@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
@@ -31,12 +32,12 @@ public class MotorFactory {
     }
     /**
      * Initializing motor
-     * @param rightMas
+     * @param motor
      * @return motor
      */
-    public static TalonSRX init(final TalonSRX rightMas) {
-        rightMas.configFactoryDefault();
-        return rightMas;
+    public static TalonFX init(final TalonFX motor) {
+        motor.configFactoryDefault();
+        return motor;
     }
     /**
      * Initializing motor
@@ -51,16 +52,16 @@ public class MotorFactory {
     /**
      * Set follower.And initializing motor.
      * 
-     * @param rightMas
-     * @param rightFol
+     * @param master
+     * @param follower
      * @return master
      */
-    public static TalonSRX setFollower(final TalonSRX rightMas, final TalonSRX rightFol) {
-        MotorFactory.init(rightMas);
-        MotorFactory.init(rightFol);
+    public static TalonFX setFollower(final TalonFX master, final TalonFX follower) {
+        MotorFactory.init(master);
+        MotorFactory.init(follower);
 
-        rightFol.follow(rightMas);
-        return rightMas;
+        follower.follow(master);
+        return master;
     }
 
     /**
@@ -120,19 +121,19 @@ public class MotorFactory {
     /**
      * Set sensor position.
      * 
-     * @param leftMas
+     * @param motor
      * @param sensorPosition
      * @param pidSlot
      * @param timeoutMs
      * @return motor
      */
-    public static TalonSRX setPosion(final TalonSRX leftMas, final int sensorPosition, final int pidSlot,
+    public static TalonFX setPosion(final TalonFX motor, final int sensorPosition, final int pidSlot,
             final int timeoutMs) {
         MotorConfig.sensorPosition = sensorPosition;
         MotorConfig.pidSlot = pidSlot;
         MotorConfig.timeoutMs = timeoutMs;
-        leftMas.setSelectedSensorPosition(sensorPosition, pidSlot, timeoutMs);
-        return leftMas;
+        motor.setSelectedSensorPosition(sensorPosition, pidSlot, timeoutMs);
+        return motor;
     }
 
     /**
@@ -183,15 +184,15 @@ public class MotorFactory {
     /**
      * Set motor like previous.
      * 
-     * @param rightMas 
+     * @param motor 
      * @param sensorPhase
      * @param isleftmotorinvert  {@link MotorConfig}
      */
-    public static void configLikePrevious(final TalonSRX rightMas, final boolean sensorPhase, final boolean isleftmotorinvert) {
-        rightMas.configSelectedFeedbackSensor(MotorConfig.sensor);
-        rightMas.setSelectedSensorPosition(MotorConfig.sensorPosition, MotorConfig.pidSlot, MotorConfig.timeoutMs);
-        rightMas.setSensorPhase(sensorPhase);
-        rightMas.setInverted(isleftmotorinvert);
+    public static void configLikePrevious(final TalonFX motor, final boolean sensorPhase, final boolean isleftmotorinvert) {
+        motor.configSelectedFeedbackSensor(MotorConfig.sensor);
+        motor.setSelectedSensorPosition(MotorConfig.sensorPosition, MotorConfig.pidSlot, MotorConfig.timeoutMs);
+        motor.setSensorPhase(sensorPhase);
+        motor.setInverted(isleftmotorinvert);
     }
 
     /**
@@ -269,14 +270,14 @@ public class MotorFactory {
     
     /** 
      * Config motor voltage.
-     * @param leftMas
+     * @param motor
      * @param voltage
      * @return
      */
-    public static TalonSRX voltageCompSaturation(TalonSRX leftMas, float voltage){
-        leftMas.configVoltageCompSaturation(voltage);
-        leftMas.enableVoltageCompensation(true);
-        return leftMas;
+    public static TalonFX voltageCompSaturation(TalonFX motor, float voltage){
+        motor.configVoltageCompSaturation(voltage);
+        motor.enableVoltageCompensation(true);
+        return motor;
     }
 
     /**
