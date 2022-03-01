@@ -12,14 +12,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Hangair extends SubsystemBase {
     //protected static Compressor intakecompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-   // private final DoubleSolenoid hangdoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
+    private final DoubleSolenoid hangdoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
     public  Hangair(){
       Intake.enablecompressor();
-       // intakecompressor.enableDigital();
     }
 
     public void hangairout(){ 
-        //  hangdoubleSolenoid.set(DoubleSolenoid.Value.kForward);
+          hangdoubleSolenoid.set(DoubleSolenoid.Value.kForward);
       }
 
       public void enable(){
@@ -28,7 +27,7 @@ public class Hangair extends SubsystemBase {
 
         
     public void hangairin(){        
-     // hangdoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+      hangdoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
 

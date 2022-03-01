@@ -1,25 +1,22 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Intake extends SubsystemBase {
     private static VictorSPX intakemotor=new VictorSPX(Constants.intakemotorno);
-    private final DoubleSolenoid intakedoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
+    private final DoubleSolenoid intakedoubleSolenoid =new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
     protected static Compressor intakecompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
-
     public  Intake(){
-        intakemotor.configFactoryDefault();
-        intakecompressor.enableDigital();
-
+      intakemotor.configFactoryDefault();
+      intakecompressor.enableDigital();
     }
     public static void enablecompressor(){
       intakecompressor.enableDigital();
@@ -27,14 +24,14 @@ public class Intake extends SubsystemBase {
 //Intake.
     public void intakeback(){ 
           intakedoubleSolenoid.set(DoubleSolenoid.Value.kForward);
-          intakemotor.set(ControlMode.PercentOutput, 0);
+          intakemotor.set(ControlMode.PercentOutput, -0.7);
       }
 
 
         
     public void intakego(){        
       intakedoubleSolenoid.set(DoubleSolenoid.Value.kReverse);
-      intakemotor.set(ControlMode.PercentOutput,-0.7);
+      intakemotor.set(ControlMode.PercentOutput,0);
     }
 
 

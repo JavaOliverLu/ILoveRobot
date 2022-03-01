@@ -43,7 +43,9 @@ public class Shooter extends SubsystemBase {
         shootermaster.configNeutralDeadband(0.03, 100);
     }
 
-    public void shoot(){/*
+    public void shoot(){
+      
+      /*
       if(Limelight.getdistances()<=80){
         if(DriverStation.getAlliance() == Alliance.Blue){
           shootermaster.config_kF(0, 0.05);
