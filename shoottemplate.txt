@@ -1,0 +1,49 @@
+        if(DriverStation.getAlliance() == Alliance.Blue){
+        if(getcolor() == blue){
+    if(Limelight.getdistances()<=80){
+      flywheelLeft.config_kF(0, 0.05);
+      flywheelRight.config_kF(0, 0.05);
+      flywheelLeft.set(ControlMode.Velocity, 8000);
+    }
+    else if(Limelight.getdistances() <= 119) {
+      flywheelLeft.config_kF(0, Constants.Value.fly_kFCLOSE);
+      flywheelRight.config_kF(0, Constants.Value.fly_kFCLOSE);
+      flywheelLeft.set(ControlMode.Velocity, Constants.Value.fly_speedCLOSE);
+    }else if(Limelight.getdistances() <=140){
+      flywheelLeft.config_kF(0, Constants.Value.fly_kFAR);
+      flywheelRight.config_kF(0, Constants.Value.fly_kFAR);
+      flywheelLeft.set(ControlMode.Velocity, Constants.Value.fly_speedFAR);
+    }
+
+}
+else if(getcolor() == red){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+}
+}
+
+
+
+        if(DriverStation.getAlliance() == Alliance.Red){
+        if(getcolor() == red){
+    if(Limelight.getdistances()<=80){
+      flywheelLeft.config_kF(0, 0.05);
+      flywheelRight.config_kF(0, 0.05);
+      flywheelLeft.set(ControlMode.Velocity, 8000);
+    }
+    else if(Limelight.getdistances() <= 119) {
+      flywheelLeft.config_kF(0, Constants.Value.fly_kFCLOSE);
+      flywheelRight.config_kF(0, Constants.Value.fly_kFCLOSE);
+      flywheelLeft.set(ControlMode.Velocity, Constants.Value.fly_speedCLOSE);
+    }else if(Limelight.getdistances() <=140){
+      flywheelLeft.config_kF(0, Constants.Value.fly_kFAR);
+      flywheelRight.config_kF(0, Constants.Value.fly_kFAR);
+      flywheelLeft.set(ControlMode.Velocity, Constants.Value.fly_speedFAR);
+    }
+
+}
+else if(getcolor() == blue){
+          shootermaster.set(ControlMode.Velocity, 2000);
+          sendshootmotor.set(ControlMode.PercentOutput,1);
+}
+}
